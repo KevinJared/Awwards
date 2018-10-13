@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url('^$',views.index,name = 'index'),
+    url(r'^new/post$', views.new_post, name='new-post'),
     url(r'^profile/(?P<user_id>\d+)?$', views.profile, name='profile'),
-    url(r'follow/(?P<user_id>\d+)', views.follow, name='follow'),
     url(r'^update/profile$', views.updateprofile, name='updateprofile'),
 ]
 if settings.DEBUG:
