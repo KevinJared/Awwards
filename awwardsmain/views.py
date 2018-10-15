@@ -39,6 +39,11 @@ def updateprofile(request):
 			form = ProfileForm()
 	return render(request, 'updateprofile.html',{"form":form })
 
+@login_required(login_url='/accounts/login')
+def vote(request,post_id):
+
+	return render(request, 'vote.html')
+
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
