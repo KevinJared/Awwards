@@ -23,15 +23,6 @@ class Profile(models.Model):
         image.user = self
         image.save()
 
-    def comment(self, photo, text):
-        Comment(text=text, photo=photo, user=self).save()
-    
-    @classmethod
-    def search_by_user(cls,search_term):
-        content = cls.objects.filter(user__username__icontains=search_term)
-        return content
-
-
 class Post(models.Model):
     sitename=models.CharField(max_length=50)
     url = models.CharField(max_length=50)
@@ -41,10 +32,6 @@ class Post(models.Model):
     user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE)
     Technology = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
-
-    @property
-    def get_comments(self):
-        return self.comments.all()
 
     class Meta:
         ordering = ["-pk"]
