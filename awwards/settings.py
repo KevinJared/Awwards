@@ -69,6 +69,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'awwardsmain.apps.AwwardsmainConfig',
+    'vote',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
