@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 import datetime as dt
-
+from vote.models import VoteModel
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=True)
     user_name = models.CharField(max_length=30,blank=True)
     prof_pic = models.ImageField(upload_to= 'profiles/', blank=True,default="profile/a.jpg")
-    bio = models.TextField(default="Welcome Me!")
+    bio = models.CharField(max_length=800,default="Welcome Me!")
 
 
     @receiver(post_save, sender=User)
