@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'^new/post$', views.new_post, name='new-post'),
     url(r'^profile/(?P<user_id>\d+)?$', views.profile, name='profile'),
     url(r'^update/profile$', views.updateprofile, name='updateprofile'),
+    url(r'^vote/(?P<post_id>\d+)?$', views.vote, name='vote'),    
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
