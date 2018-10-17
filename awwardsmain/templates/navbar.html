@@ -46,7 +46,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-1" style="padding-top:10px;">
+                <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
+                    <input type="text" class="form-control my-2 my-sm-0 search-input" name="search" placeholder="Search.." id="search">
+                </form>
+            </div>
             <div class="col-md-8" style=" padding-top:5px;text-align:center;font-family: 'Comfortaa', cursive; letter-spacing:2px;">
                 <div class="row">
                     <div class="col-md-10">
