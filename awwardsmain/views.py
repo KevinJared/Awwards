@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.shortcuts import redirect
 from awwardsmain.models import Post, Profile
 from django.contrib.auth.models import User
-from .forms import NewPostForm, UserForm, ProfileForm,CommentForm
+from .forms import NewPostForm, UserForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
 import datetime as dt
 
@@ -42,7 +42,7 @@ def updateprofile(request):
 @login_required(login_url='/accounts/login')
 def vote(request,post_id):
     
-	return render(request, 'index.html',{"posts": posts})
+	return render(request, 'vote.html')
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):

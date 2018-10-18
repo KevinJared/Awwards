@@ -4,6 +4,7 @@ from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 import datetime as dt
 from vote.models import VoteModel
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -35,9 +36,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-pk"]
-
-class Comment(models.Model):
-    text = models.TextField()
-    photo = models.ForeignKey(Post, related_name='comment')
-    user = models.ForeignKey(Profile, related_name='comment')
-                              
+#
+# class Rate(models.Model):
+#     # Post = models.ForeignKey(post)
+#     user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE)
+#     dif_rate = models.IntegerField(null=True, blank=True)
+#     other_rate = models.IntegerField(null=True, blank=True)
