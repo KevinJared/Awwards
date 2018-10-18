@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{%load bootstrap4 %}
 {% block content %}
 {{block.super}}
 
@@ -73,17 +72,12 @@
         </div>
         <div class="row">
             {% for post in posts %}
-            <div class="col-md-3" style="margin-bottom:15px;">
-                <div id="image" class="body">
-                    <div class="hover02 column">
-                        <div>
-                            <figure><a target="blank" href="{%url 'vote' post_id=post.id%}"><img type="button" class="btn btn-lg img-responsive"
-                                        class="img-responsive" src="{{post.image.url }}" alt="" width="100%" ; height="200px"
-                                        ;></a></figure>
-                        </div>
-                    </div>
+            <div class="col-md-3" style="margin-bottom:25px;">
+                <div id="image" class="hover02 column body">
+                   <figure><a target="blank" href="{%url 'vote' post_id=post.id%}"><img class="img-responsive" src="{{post.image.url }}"
+                    width="100%" ; height="200px" ;></a></figure> 
                 </div>
-                <div class="card-header" style="background-color:white; font-size: 13px;">
+                <div class="card-header" style="background-color:white; font-size: 13px; margin-top:0px;">
                     <p><strong>{{post.sitename}}</strong></p>
                     From {{post.country}} &nbsp; &nbsp; &nbsp; {{post.post_date}}
                     <div class="text2">
