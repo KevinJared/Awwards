@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.shortcuts import redirect
+from django.http import HttpResponse, Http404,HttpResponseRedirect
 from awwardsmain.models import Post, Profile
 from django.contrib.auth.models import User
 from .forms import NewPostForm, UserForm, ProfileForm 
@@ -39,10 +39,13 @@ def updateprofile(request):
 			form = ProfileForm()
 	return render(request, 'updateprofile.html',{"form":form })
 
-@login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login/')
 def vote(request,post_id):
-    
-	return render(request, 'vote.html')
+    try:
+        post = Post.objects.get(id = post_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"vote.html", {"post":post})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
