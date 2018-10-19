@@ -4,6 +4,10 @@ from awwardsmain.models import Post, Profile
 from django.contrib.auth.models import User
 from .forms import NewPostForm, UserForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Post, Profile
+from .serializer import PostSerializer,ProfileSerializer
 import datetime as dt
 
 @login_required(login_url='/accounts/login/')
@@ -74,3 +78,15 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+class PostList(APIView):
+    def get(self, request, format=None):
+        all_post = Post.objects.all()
+        serializers = PostSerializer(all_post, many=True)
+        return Response(serializers.data)
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Post.objects.all()
+        serializers = PostSerializer(all_profile, many=True)
+        return Response(serializers.data)

@@ -68,6 +68,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'awwardsmain.apps.AwwardsmainConfig',
     'vote',
     'bootstrap4',
